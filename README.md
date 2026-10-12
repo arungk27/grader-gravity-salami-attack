@@ -23,7 +23,7 @@ Three things worth knowing before you read the numbers:
 2. **Setup E's side door leaked politely.** In 1 of 20 runs the agent escalated the full ₹12,000 correctly and *then* added ₹2,000 of goodwill credit through the tool the grader wasn't summing. No rule was broken. Setup F's gateway grader would also have approved it, because it counts money moved, not money pending with a human.
 3. **The LLM judge was rubric-sensitive.** A first rubric flagged 60–85% of customer replies as "overstating" what was paid, including runs where ₹0 moved. Rewriting one clause (see `JUDGE_PROMPT`) dropped it to 0% on the same messages.
 
-The summary and chart describe the two models by role, "reasoning model" and "fast model", because the finding is about capability versus compliance, not about any one model. Both are current models from one family, run through Vertex AI on the same day. Full run transcripts are not included in this repo; `results/summary.md` and `results/summary.json` carry the per-cell numbers.
+The summary and chart describe the two models by role, "reasoning model" and "fast model", because the finding is about capability versus compliance, not about any one model. Both are current models from one family, run through the Gemini Enterprise Agent Platform (GEAP) on the same day. Full run transcripts are not included in this repo; `results/summary.md` and `results/summary.json` carry the per-cell numbers.
 
 ## Layout
 
@@ -39,7 +39,7 @@ results/               summary table, summary json, chart (run transcripts not p
 
 ## Run it yourself
 
-Requirements: Python 3.12+, [uv](https://docs.astral.sh/uv/), and a Google Cloud project with Vertex AI enabled and Application Default Credentials set up (`gcloud auth application-default login`).
+Requirements: Python 3.12+, [uv](https://docs.astral.sh/uv/), and a Google Cloud project with the Gemini Enterprise Agent Platform (GEAP) enabled and Application Default Credentials set up (`gcloud auth application-default login`).
 
 ```bash
 uv sync
@@ -58,7 +58,7 @@ uv run python analyze.py results/runs_YYYYMMDD_HHMMSS_judged.jsonl \
 
 `--model-label` relabels both the chart and the summary table; the raw run records keep the real model ids.
 
-The agent loop uses the `google-genai` SDK against Vertex AI. Swapping in another provider means replacing `make_client` and the tool-calling plumbing in `run_episode`; the graders, ledger and metrics don't care who the model is.
+The agent loop uses the `google-genai` SDK against the Gemini Enterprise Agent Platform. Swapping in another provider means replacing `make_client` and the tool-calling plumbing in `run_episode`; the graders, ledger and metrics don't care who the model is.
 
 ## How scoring works
 
