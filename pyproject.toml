@@ -1,0 +1,9 @@
+[project]
+name = "salami-attack"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "cedarpy>=4.12.1",
+    "google-genai>=2.29.0",
+    "matplotlib>=3.11.2",
+]

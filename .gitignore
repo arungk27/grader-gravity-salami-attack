@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+.pytest_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Local secrets and config (never commit)
+.env
+*.json.key
+service-account*.json
+
+# Run transcripts stay local (see README)
+results/*.jsonl
