@@ -17,3 +17,6 @@ service-account*.json
 
 # Run transcripts stay local (see README)
 results/*.jsonl
+
+# Lockfile is machine-specific; uv sync recreates it from pyproject.toml
+uv.lock
